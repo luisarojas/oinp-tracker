@@ -25,9 +25,15 @@ The script uses the [Ontario Immigrant Nominee Program (OINP)](https://www.ontar
 
 ## Technologies
 
-* `python==3.8.6`
-* `beautifulsoup4==4.9.3`
-* `requests==2.24.0`
+* beautifulsoup4==4.9.3
+* bs4==0.0.1
+* certifi==2020.11.8
+* chardet==3.0.4
+* idna==2.10
+* requests==2.24.0
+* selenium==3.141.0
+* soupsieve==2.0.1; python_version >= '3.0'
+* urllib3==1.25.11
 
 
 ## Usage
@@ -53,16 +59,17 @@ ENV = {
 
 ### Testing Environment
 
-When the `testing_env` variable is set to `True`:
+When the `testing` variable is set to `True`:
 
-* An e-mail will always be sent, regardless of if there is a change or not
+* The `test.html` file will be used as source, instead of the URL set.
+* An e-mail will always be sent, regardless of if there is a change or not.
 * Only the first recipient in the `emails` list will receive the e-mail.
 * The e-mail subject will indicate whether the e-mail is a test or not.
 
 ### Execution
 
 ```
-$ pipenv run python run.py
+$ pipenv run python app.py
 ```
 
 ## License
