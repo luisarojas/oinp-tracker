@@ -125,7 +125,7 @@ if __name__ == "__main__":
         if (now >= next_start): seconds = 86400
 
         res = check_diff()
-        if res["changed"]: send_email(res["html"])
+        if res["changed"] or testing: send_email(res["html"])
         else: print('No changes')
 
         reset_settings()
