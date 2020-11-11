@@ -7,7 +7,6 @@ name = "pypi"
 selenium = "*"
 bs4 = "*"
 requests = "*"
-pyvirtualdisplay = "*"
 
 [dev-packages]
 
