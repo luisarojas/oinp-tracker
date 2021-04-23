@@ -23,17 +23,9 @@
 The script uses the [Ontario Immigrant Nominee Program (OINP)](https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp) website to check if the alerts in it have changed at all. The check is done every day, roughly at 9 AM. If any changes are identified, an e-mail will be sent to all recipients specified in the `env.py` file (not included).
 
 
-## Technologies
+## Machine Requirements
 
-* beautifulsoup4==4.9.3
-* bs4==0.0.1
-* certifi==2020.11.8
-* chardet==3.0.4
-* idna==2.10
-* requests==2.24.0
-* selenium==3.141.0
-* soupsieve==2.0.1; python_version >= '3.0'
-* urllib3==1.25.11
+Docker is the only tool required on the machine running this program.
 
 
 ## Usage
@@ -69,14 +61,14 @@ When the `testing` variable is set to `True`:
 ### Execution
 
 ```
-$ pipenv run python app.py
+$ make
 ```
 
 ## License
 
 This project was released under the [MIT License](http://www.opensource.org/licenses/MIT).
 
-Copyright &copy; 2020 Luisa Rojas
+Copyright &copy; 2021 Luisa Rojas
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
