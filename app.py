@@ -50,7 +50,7 @@ def check_diff():
             html = file.read()
 
     soup = BeautifulSoup(html, "html.parser") 
-    alert_html = soup.select('div.alert-box')[1]
+    alert_html = soup.select('div.alert-box')[0]
 
     global prev_alert_html
     if (hash(prev_alert_html) != hash(alert_html)) and (prev_alert_html): changed = True
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     if testing: print('\033[93m\033[1m' + ('-'*30) + '\n*** IN TESTING ENVIRONMENT ***\n' + ('-'*30) + '\033[0m')
     
     seconds = 3600 # check every hour until next_start; then, check every 24 hours
-    next_start = datetime(2020, 11, 11, 9, 0, 0) # Nov 11, 2020 at 9 AM
+    next_start = datetime(2020, 11, 17, 9, 0, 0) # Nov 11, 2020 at 9 AM
 
     print(f'Checking every {int(seconds/60)} minutes\n')
 
@@ -122,13 +122,17 @@ if __name__ == "__main__":
         now = datetime.now() - timedelta(hours=5) # Digital Ocean server is on +5 timezone
         print(now.strftime('%b %d, %Y at %I:%M %p'),': ', end='')
 
-        if (now >= next_start): seconds = 86400
+        if (now >= next_start):
+            
+            seconds = 86400
+            
+            try:
 
-        res = check_diff()
-        if res["changed"] or testing: send_email(res["html"])
-        else: print('No changes')
-
-        reset_settings()
-        
-        input()
+                res = check_diff()
+                if res["changed"] or testing: send_email(res["html"])
+                else: print('No changes')
+            
+            except Exception as e: send_email(f'There has been an error in the script.\n{e}')
+            finally: reset_settings()
+            
         time.sleep(seconds)
