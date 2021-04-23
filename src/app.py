@@ -17,7 +17,7 @@ import pytz
 
 est_timezone = pytz.timezone('EST')
 
-testing = True
+testing = False
 test_file_html='test.html'
 
 prev_alert_html = None
@@ -155,10 +155,10 @@ if __name__ == "__main__":
         print('\033[93m\033[1m' + ('-'*30) + '\n*** IN TESTING ENVIRONMENT ***\n' + ('-'*30))
         print(f'Using `{test_file_html}` as source of web-scrapping content\033[0m')
     
-    start_date = est_timezone.localize(datetime(2021, 4, 22, 23, 50, 0)) # Apr 23, 2021 at 9 AM
+    start_date = est_timezone.localize(datetime(2021, 4, 26, 9, 0, 0)) # Apr 26, 2021 at 9 AM
 
-    # seconds = 86400 # check every 24 hours
-    seconds = 60 # check every minute
+    seconds = 86400 # check every 24 hours
+    # seconds = 60 # check every minute
 
     print('Frequency: Every ', end='')
     if seconds < 60: print(f'{seconds} second(s)')
